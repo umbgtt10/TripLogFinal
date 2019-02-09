@@ -1,2 +1,6 @@
 1) Using virtualBox:
-https://www.wikigain.com/install-macos-sierra-10-12-virtualbox/
+- https://techsviewer.com/install-macos-10-14-mojave-virtualbox-windows/
+- Install Visual studio for Mac as well as the latest version of xcode on the Mac.
+- Enable remote logon on the Mac.
+- From Visual Studio on Windows go to Tools->iOS->PairToMac and provide the IP of the MAC. 
+- Install all the necessary missing dependencies on the mac.
