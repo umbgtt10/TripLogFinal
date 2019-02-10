@@ -24,7 +24,7 @@ namespace TripLog.Views
 
         private void New_Clicked(object sender, EventArgs args)
         {
-            var newEntryPage = _combinedFactory.Build(TripLogViewModelType.New);
+            var newEntryPage = _combinedFactory.Build(ViewType.New);
 
             Navigation.PushAsync(newEntryPage);
         }
@@ -33,7 +33,7 @@ namespace TripLog.Views
         {
             var entry = (TripLogEntry)e.Item;
 
-            var detailView = _combinedFactory.Build(TripLogViewModelType.Detail, entry);
+            var detailView = _combinedFactory.Build(ViewType.Detail, entry);
 
             Navigation.PushAsync(detailView);
         }

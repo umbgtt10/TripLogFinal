@@ -1,6 +1,6 @@
 ﻿namespace TripLog.ViewModels
 {
-    public enum TripLogViewModelType
+    public enum ViewType
     {
         Main = 0,
         Detail = 1,

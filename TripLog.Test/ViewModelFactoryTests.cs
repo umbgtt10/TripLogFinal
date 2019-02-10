@@ -11,7 +11,7 @@ namespace TripLog.Test
         {
             var viewModelFactory = new ViewModelFactory();
 
-            var viewModel = viewModelFactory.Build(TripLogViewModelType.Main);
+            var viewModel = viewModelFactory.Build(ViewType.Main);
 
             Assert.IsInstanceOfType(viewModel, typeof(MainViewModel));
         }
@@ -21,7 +21,7 @@ namespace TripLog.Test
         {
             var viewModelFactory = new ViewModelFactory();
 
-            var viewModel = viewModelFactory.Build(TripLogViewModelType.New);
+            var viewModel = viewModelFactory.Build(ViewType.New);
 
             Assert.IsInstanceOfType(viewModel, typeof(NewEntryViewModel));
         }
@@ -31,7 +31,7 @@ namespace TripLog.Test
         {
             var viewModelFactory = new ViewModelFactory();
 
-            var viewModel = viewModelFactory.Build(TripLogViewModelType.Detail);
+            var viewModel = viewModelFactory.Build(ViewType.Detail);
 
             Assert.IsInstanceOfType(viewModel, typeof(DetailViewModel));
         }

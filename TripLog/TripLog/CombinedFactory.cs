@@ -16,7 +16,7 @@ namespace TripLog
             _viewModelFactory = viewModelFactory;
         }
 
-        public ContentPage Build(TripLogViewModelType modelType)
+        public ContentPage Build(ViewType modelType)
         {
             var viewModel = _viewModelFactory.Build(modelType);
             viewModel.Init();
@@ -24,7 +24,7 @@ namespace TripLog
             return view;
         }
 
-        public ContentPage Build(TripLogViewModelType modelType, TripLogEntry entry)
+        public ContentPage Build(ViewType modelType, TripLogEntry entry)
         {
             var viewModel = _viewModelFactory.Build(modelType);
             viewModel.Init(entry);

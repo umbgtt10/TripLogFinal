@@ -19,7 +19,7 @@ namespace TripLog
             _viewFactory = new ViewFactory();
             _combinedFactory = new CombinedFactory(_viewFactory, _viewModelFactory);
 
-            var viewModel = _viewModelFactory.Build(TripLogViewModelType.Main);
+            var viewModel = _viewModelFactory.Build(ViewType.Main);
             viewModel.Init();
 
             var mainPage = new MainPage(viewModel);

@@ -4,20 +4,15 @@ namespace TripLog.ViewModels
 {
     public class ViewModelFactory
     {
-        public ViewModelFactory()
-        {
-
-        }
-
-        public BaseViewModel Build(TripLogViewModelType viewModelType)
+        public BaseViewModel Build(ViewType viewModelType)
         {
             switch (viewModelType)
             {
-                case TripLogViewModelType.Detail:
+                case ViewType.Detail:
                     return new DetailViewModel();
-                case TripLogViewModelType.Main:
+                case ViewType.Main:
                     return new MainViewModel();
-                case TripLogViewModelType.New:
+                case ViewType.New:
                     return new NewEntryViewModel();
                 default:
                     throw new Exception($"Unknown {viewModelType}");

@@ -8,17 +8,17 @@ namespace TripLog.Views
 {
     public class ViewFactory
     {
-        public ContentPage Build(TripLogViewModelType modelType, BaseViewModel viewModel)
+        public ContentPage Build(ViewType modelType, BaseViewModel viewModel)
         {
             switch (modelType)
             {
-                case TripLogViewModelType.Main:
+                case ViewType.Main:
                     var mainPage = new MainPage(viewModel);
                     return mainPage;
-                case TripLogViewModelType.New:
+                case ViewType.New:
                     var newEntryPage = new NewEntryPage(viewModel);
                     return newEntryPage;
-                case TripLogViewModelType.Detail:
+                case ViewType.Detail:
                     var detailPage = new DetailPage(viewModel);
                     return detailPage;
                 default:
