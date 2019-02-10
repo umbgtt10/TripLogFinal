@@ -1,19 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 using TripLog.Models;
 
-using Xamarin.Forms;
-
-namespace TripLog
+namespace TripLog.ViewModels
 {
-    public partial class MainPage : ContentPage
+    public class MainViewModel : BaseViewModel
     {
-        public MainPage()
-        {
-            InitializeComponent();
+        #region Observables
 
-            var items = new List<TripLogEntry>
+        private ObservableCollection<TripLogEntry> _logEntries;
+        public ObservableCollection<TripLogEntry> LogEntries
+        {
+            get
+            {
+                return _logEntries;
+            }
+
+            set
+            {
+                _logEntries = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
+        public MainViewModel()
+        {
+            LogEntries = new ObservableCollection<TripLogEntry>(RetrieveEntries());
+        }
+
+        private IList<TripLogEntry> RetrieveEntries()
+        {
+            return new List<TripLogEntry>
             {
                 new TripLogEntry
                 {
@@ -43,18 +64,6 @@ namespace TripLog
                     Longitude = -122.4798
                 }
             };
-
-            trips.ItemsSource = items;
-        }
-
-        private void New_Clicked(object sender, EventArgs args)
-        {
-            Navigation.PushAsync(new NewEntryPage());
-        }
-
-        private void Trips_OnItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            Navigation.PushAsync(new DetailPage((TripLogEntry)e.Item));
         }
     }
 }
