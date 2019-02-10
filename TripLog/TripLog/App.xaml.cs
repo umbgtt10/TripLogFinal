@@ -1,4 +1,8 @@
-﻿using TripLog.ViewModels;
+﻿using System;
+using Ninject;
+using Ninject.Modules;
+using TripLog.Services;
+using TripLog.ViewModels;
 using TripLog.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,11 +15,18 @@ namespace TripLog
         private readonly ViewModelFactory _viewModelFactory;
         private readonly ViewFactory _viewFactory;
         private readonly CombinedFactory _combinedFactory;
+        private readonly IKernel _kernel;
 
-        public App()
+        public App(params INinjectModule[] platformModules)
         {
             InitializeComponent();
-            _viewModelFactory = new ViewModelFactory();
+
+            _kernel = new StandardKernel();
+            _kernel.Load(platformModules);
+
+            var locationService = _kernel.Get<GeoLocationService>();
+
+            _viewModelFactory = new ViewModelFactory(locationService);
             _viewFactory = new ViewFactory();
             _combinedFactory = new CombinedFactory(_viewFactory, _viewModelFactory);
 

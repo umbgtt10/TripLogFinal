@@ -90,6 +90,8 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Modules\TripLogPlatformModule.cs" />
+    <Compile Include="Services\IosLocationService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -148,6 +150,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Portable.Ninject">
+      <Version>3.3.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.129452" />
     <PackageReference Include="Xamarin.Forms.Maps">
       <Version>3.5.0.129452</Version>
@@ -160,4 +165,5 @@
       <Name>TripLog</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
 </Project>
