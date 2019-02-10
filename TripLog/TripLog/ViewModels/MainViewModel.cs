@@ -32,6 +32,16 @@ namespace TripLog.ViewModels
             LogEntries = new ObservableCollection<TripLogEntry>(RetrieveEntries());
         }
 
+        public override void Init()
+        {
+            LogEntries = new ObservableCollection<TripLogEntry>(RetrieveEntries());
+        }
+
+        public override void Init(TripLogEntry entry)
+        {
+            throw new NotImplementedException();
+        }
+
         private IList<TripLogEntry> RetrieveEntries()
         {
             return new List<TripLogEntry>

@@ -83,6 +83,17 @@ namespace TripLog.ViewModels
             Rating = 1;
         }
 
+        public override void Init()
+        {
+            Date = DateTime.Now;
+            Rating = 1;
+        }
+
+        public override void Init(TripLogEntry entry)
+        {
+            throw new NotImplementedException();
+        }
+
         private void ExecuteSaveCommand()
         {
             var newEntry = new TripLogEntry()

@@ -11,11 +11,11 @@ namespace TripLog.Views
 	{
         private DetailViewModel _vm { get { return BindingContext as DetailViewModel; } }
 
-        public DetailPage(TripLogEntry entry)
+        public DetailPage(BaseViewModel viewModel)
         {
             InitializeComponent();
 
-            BindingContext = new DetailViewModel(entry);
+            BindingContext = viewModel;
 
             var position = new Position(_vm.Entry.Latitude, _vm.Entry.Longitude);
 
