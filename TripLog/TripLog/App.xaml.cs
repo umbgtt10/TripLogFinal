@@ -8,17 +8,21 @@ namespace TripLog
 {
     public partial class App : Application
     {
-        private ViewModelFactory _viewModelFactory;
+        private readonly ViewModelFactory _viewModelFactory;
+        private ViewFactory _viewFactory;
 
         public App()
         {
             InitializeComponent();
             _viewModelFactory = new ViewModelFactory();
+            _viewFactory = new ViewFactory(_viewModelFactory);
 
             var viewModel = _viewModelFactory.Build(TripLogViewModelType.Main);
             viewModel.Init();
 
-            MainPage = new NavigationPage(new MainPage(_viewModelFactory, viewModel));
+            var mainPage = _viewFactory.Build(TripLogViewModelType.Main, viewModel);
+
+            MainPage = new NavigationPage(mainPage);
         }
 
         protected override void OnStart()

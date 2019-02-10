@@ -8,12 +8,16 @@ namespace TripLog.Views
 {
     public partial class MainPage : ContentPage
     {
+        private readonly ViewFactory _viewFactory;
         private readonly ViewModelFactory _viewModelFactory;
 
-        public MainPage(ViewModelFactory viewModelFactory, BaseViewModel viewModel)
+        public MainPage(ViewFactory viewFactory, 
+                        ViewModelFactory viewModelFactory, 
+                        BaseViewModel viewModel)
         {
             InitializeComponent();
             _viewModelFactory = viewModelFactory;
+            _viewFactory = viewFactory;
 
             BindingContext = viewModel;
         }
@@ -23,7 +27,9 @@ namespace TripLog.Views
             var viewModel = _viewModelFactory.Build(TripLogViewModelType.New);
             viewModel.Init();
 
-            Navigation.PushAsync(new NewEntryPage(viewModel));
+            var newEntryPage = _viewFactory.Build(TripLogViewModelType.New, viewModel);
+
+            Navigation.PushAsync(newEntryPage);
         }
 
         private void Trips_OnItemTapped(object sender, ItemTappedEventArgs e)
@@ -32,7 +38,9 @@ namespace TripLog.Views
             var viewModel = _viewModelFactory.Build(TripLogViewModelType.Detail);
             viewModel.Init(entry);
 
-            Navigation.PushAsync(new DetailPage(viewModel));
+            var detailView = _viewFactory.Build(TripLogViewModelType.Detail, viewModel);
+
+            Navigation.PushAsync(detailView);
         }
     }
 }
