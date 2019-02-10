@@ -8,19 +8,12 @@ namespace TripLog.Views
 {
     public class ViewFactory
     {
-        private readonly ViewModelFactory _viewModelFactory;
-
-        public ViewFactory(ViewModelFactory viewModelFactory)
-        {
-            _viewModelFactory = viewModelFactory;
-        }
-
         public ContentPage Build(TripLogViewModelType modelType, BaseViewModel viewModel)
         {
             switch (modelType)
             {
                 case TripLogViewModelType.Main:
-                    var mainPage = new MainPage(this, _viewModelFactory, viewModel);
+                    var mainPage = new MainPage(viewModel);
                     return mainPage;
                 case TripLogViewModelType.New:
                     var newEntryPage = new NewEntryPage(viewModel);
