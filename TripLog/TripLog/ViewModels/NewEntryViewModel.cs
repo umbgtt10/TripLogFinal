@@ -79,13 +79,17 @@ namespace TripLog.ViewModels
         #endregion
 
         private readonly GeoLocationService _locationService;
+        private readonly TripLogDataService _dataService;
 
-        public NewEntryViewModel(GeoLocationService locationService)
+        public NewEntryViewModel(
+            GeoLocationService locationService,
+            TripLogDataService dataService)
         {
             Date = DateTime.Now;
             Rating = 1;
 
             _locationService = locationService;
+            _dataService = dataService;
         }
 
         public override async void Init()
@@ -117,6 +121,7 @@ namespace TripLog.ViewModels
             };
 
             // Persist the newly created entry here!
+            _dataService.AddEntryAsync(newEntry);
         }
     }
 }

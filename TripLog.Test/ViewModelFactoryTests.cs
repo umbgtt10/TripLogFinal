@@ -6,12 +6,10 @@ namespace TripLog.Test
     [TestClass]
     public class ViewModelFactoryTests
     {
-        public static ViewModelFactory ViewModelFactory = new ViewModelFactory(TestInit.MockedGeoLocationService.Object);
-
         [TestMethod]
         public void MainViewModelCreationTest()
         {
-            var viewModel = ViewModelFactory.Build(ViewType.Main);
+            var viewModel = TestInit.ViewModelFactory.Build(ViewType.Main);
 
             Assert.IsInstanceOfType(viewModel, typeof(MainViewModel));
         }
@@ -19,7 +17,7 @@ namespace TripLog.Test
         [TestMethod]
         public void NewEntryViewModelCreationTest()
         {
-            var viewModel = ViewModelFactory.Build(ViewType.New);
+            var viewModel = TestInit.ViewModelFactory.Build(ViewType.New);
 
             Assert.IsInstanceOfType(viewModel, typeof(NewEntryViewModel));
         }
@@ -27,7 +25,7 @@ namespace TripLog.Test
         [TestMethod]
         public void DetailViewModelCreationTest()
         {
-            var viewModel = ViewModelFactory.Build(ViewType.Detail);
+            var viewModel = TestInit.ViewModelFactory.Build(ViewType.Detail);
 
             Assert.IsInstanceOfType(viewModel, typeof(DetailViewModel));
         }

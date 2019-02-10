@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
+using System.Linq;
+using System.Threading.Tasks;
 using TripLog.Models;
+using TripLog.Services;
 
 namespace TripLog.ViewModels
 {
@@ -27,14 +29,16 @@ namespace TripLog.ViewModels
 
         #endregion
 
-        public MainViewModel()
+        private readonly TripLogDataService _dataService;
+
+        public MainViewModel(TripLogDataService dataService)
         {
-            LogEntries = new ObservableCollection<TripLogEntry>(RetrieveEntries());
+            _dataService = dataService;
         }
 
-        public override void Init()
+        public override async void Init()
         {
-            LogEntries = new ObservableCollection<TripLogEntry>(RetrieveEntries());
+            LogEntries = new ObservableCollection<TripLogEntry>(await RetrieveEntries());
         }
 
         public override void Init(TripLogEntry entry)
@@ -42,9 +46,10 @@ namespace TripLog.ViewModels
             throw new NotImplementedException();
         }
 
-        private IList<TripLogEntry> RetrieveEntries()
+        private async Task<IList<TripLogEntry>> RetrieveEntries()
         {
-            return new List<TripLogEntry>
+            var data = await _dataService.ReadAllEntriesAsync();
+            var hardCodedData = new List<TripLogEntry>
             {
                 new TripLogEntry
                 {
@@ -74,6 +79,8 @@ namespace TripLog.ViewModels
                     Longitude = -122.4798
                 }
             };
+
+            return new List<TripLogEntry>(data).Union(hardCodedData).ToList();
         }
     }
 }

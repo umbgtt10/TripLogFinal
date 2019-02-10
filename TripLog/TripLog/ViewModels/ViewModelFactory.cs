@@ -6,10 +6,14 @@ namespace TripLog.ViewModels
     public class ViewModelFactory
     {
         private readonly GeoLocationService _locationService;
+        private readonly TripLogDataService _dataService;
 
-        public ViewModelFactory(GeoLocationService locationService)
+        public ViewModelFactory(
+            GeoLocationService locationService,
+            TripLogDataService dataService)
         {
             _locationService = locationService;
+            _dataService = dataService;
         }
 
         public BaseViewModel Build(ViewType viewModelType)
@@ -19,9 +23,9 @@ namespace TripLog.ViewModels
                 case ViewType.Detail:
                     return new DetailViewModel();
                 case ViewType.Main:
-                    return new MainViewModel();
+                    return new MainViewModel(_dataService);
                 case ViewType.New:
-                    return new NewEntryViewModel(_locationService);
+                    return new NewEntryViewModel(_locationService, _dataService);
                 default:
                     throw new Exception($"Unknown {viewModelType}");
             }
