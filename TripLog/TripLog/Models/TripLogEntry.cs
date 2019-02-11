@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TripLog.Models
 {
@@ -19,9 +20,21 @@ namespace TripLog.Models
             Notes = string.Empty;
         }
 
-        public TripLogEntry(string title) : this()
+        public override bool Equals(object obj)
         {
-            Title = title;
+            if (!(obj is TripLogEntry))
+            {
+                return false;
+            }
+
+            var instance = (TripLogEntry)obj;
+
+            return instance.Id.Equals(Id);
+        }
+
+        public override int GetHashCode()
+        {
+            return 2108858624 + EqualityComparer<string>.Default.GetHashCode(Id);
         }
     }
 }

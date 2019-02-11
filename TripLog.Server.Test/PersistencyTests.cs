@@ -37,8 +37,8 @@ namespace TripLog.Server.Test
             var title1 = "Number1";
             var title2 = "Number2";
 
-            _db.Add(new TripLogEntry(title1));
-            _db.Add(new TripLogEntry(title2));
+            _db.Add(new TripLogEntry {Title = title1});
+            _db.Add(new TripLogEntry { Title = title2 });
 
             var allEntries = _db.GetAll();
 
@@ -51,7 +51,7 @@ namespace TripLog.Server.Test
         public void AddSameElementTwiceToPersistencyTest()
         {
             var title1 = "Number1";
-            var entry = new TripLogEntry(title1);
+            var entry = new TripLogEntry { Title = title1 };
 
             _db.Add(entry);
             _db.Add(entry);

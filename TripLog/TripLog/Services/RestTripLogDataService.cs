@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using TripLog.Models;
 
@@ -6,27 +8,26 @@ namespace TripLog.Services
 {
     public class RestTripLogDataService : TripLogDataService
     {
-        public Task AddEntryAsync(TripLogEntry entry)
+        protected readonly StandardAsyncHttpClient _httpClient;
+        protected readonly Uri _baseUri;
+        protected readonly IDictionary<string, string> _headers;
+
+        public RestTripLogDataService(StandardAsyncHttpClient httpClient, Uri baseUri)
         {
-            var task = new Task(GetAdd);
-            task.Start();
-            return task;
+            _httpClient = httpClient;
+            _baseUri = baseUri;
+            _headers = new Dictionary<string, string>();
         }
 
-        private void GetAdd()
+        public async Task AddEntryAsync(TripLogEntry entry)
         {
+            var response = await _httpClient.SendRequestAsync<TripLogEntry>(_baseUri, HttpMethod.Post, _headers, entry);
         }
 
-        public Task<IList<TripLogEntry>> ReadAllEntriesAsync()
+        public async Task<IList<TripLogEntry>> ReadAllEntriesAsync()
         {
-            var task = new Task<IList<TripLogEntry>>(GetRead);
-            task.Start();
-            return task;
-        }
-
-        private IList<TripLogEntry> GetRead()
-        {
-            return new List<TripLogEntry>();
+            var response = await _httpClient.SendRequestAsync<TripLogEntry[]>(_baseUri, HttpMethod.Get, _headers);
+            return response;
         }
     }
 }

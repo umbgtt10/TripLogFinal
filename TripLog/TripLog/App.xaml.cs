@@ -26,7 +26,11 @@ namespace TripLog
 
             var locationService = _kernel.Get<GeoLocationService>();
 
-            _viewModelFactory = new ViewModelFactory(locationService, new RestTripLogDataService());
+            var httpClient = new StandardAsyncHttpClient();
+            var backendUri = new Uri("http://192.168.56.10:30080/api/TripLogWebApi/");
+            var restTripLogDataService = new RestTripLogDataService(httpClient, backendUri);
+
+            _viewModelFactory = new ViewModelFactory(locationService, restTripLogDataService);
             _viewFactory = new ViewFactory();
             _combinedFactory = new CombinedFactory(_viewFactory, _viewModelFactory);
 

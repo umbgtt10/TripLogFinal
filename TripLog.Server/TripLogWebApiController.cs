@@ -7,11 +7,14 @@ namespace TripLog.Server
 {
     public class TripLogWebApiController : ApiController
     {
-        private readonly DbreezeTripLogPersistency _persistency;
+        private readonly TripLogPersistency _persistency;
+        private readonly Environment _environment;
 
         public TripLogWebApiController()
         {
-            _persistency = new DbreezeTripLogPersistency(new DirectoryInfo(@"C:\WebServer\Persistency"));
+            _environment = Environment.Test;
+            _persistency = new TripLogPersistencyBuilder(new DirectoryInfo(@"C:\WebServer\Persistency")).
+                Build(_environment);
             _persistency.Setup();
         }
 
@@ -47,6 +50,16 @@ namespace TripLog.Server
         // DELETE: api/TripLogApi/5
         public void Delete(int id)
         {
+            if (_environment == Environment.Test)
+            {
+                ((ExtendedDbreezeTripLogPersistency)_persistency).RemoveAll();
+
+                _persistency.Dispose();
+            }
+            else
+            {
+                // Nothing or exception?
+            }
         }
     }
 }

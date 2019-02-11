@@ -88,7 +88,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbreezeTripLogPersistency.cs" />
+    <Compile Include="Environment.cs" />
+    <Compile Include="ExtendedDbreezeTripLogPersistency.cs" />
     <Compile Include="TripLogPersistency.cs" />
+    <Compile Include="TripLogPersistencyBuilder.cs" />
     <Compile Include="WebApiConfig.cs" />
     <Compile Include="TripLogWebApiController.cs" />
     <Compile Include="Global.asax.cs">
