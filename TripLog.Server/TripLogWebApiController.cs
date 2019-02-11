@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TripLog.Models;
 
 namespace TripLog.Server
 {
     public class TripLogWebApiController : ApiController
     {
         // GET: api/TripLogApi
-        public IEnumerable<string> Get()
+        public IEnumerable<TripLogEntry> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new TripLogEntry[] { new TripLogEntry(), new TripLogEntry() };
         }
 
         // GET: api/TripLogApi/5
@@ -22,12 +22,12 @@ namespace TripLog.Server
         }
 
         // POST: api/TripLogApi
-        public void Post([FromBody]string value)
+        public void Post([FromBody]TripLogEntry value)
         {
         }
 
         // PUT: api/TripLogApi/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]TripLogEntry value)
         {
         }
 

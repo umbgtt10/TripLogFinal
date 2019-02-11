@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DBreeze, Version=1.92.2018.1029, Culture=neutral, PublicKeyToken=174b57f1c155f3c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\DBreeze.1.92.0\lib\net47\DBreeze.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -84,6 +87,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbreezeTripLogPersistency.cs" />
+    <Compile Include="TripLogPersistency.cs" />
     <Compile Include="WebApiConfig.cs" />
     <Compile Include="TripLogWebApiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -101,7 +106,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TripLog\TripLog\TripLog.csproj">
+      <Project>{25017021-7B86-44AB-93F0-3E0EC08630F9}</Project>
+      <Name>TripLog</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
