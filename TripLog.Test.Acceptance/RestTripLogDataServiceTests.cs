@@ -10,8 +10,8 @@ namespace TripLog.Test.Acceptance
     [TestClass]
     public class RestTripLogDataServiceTests
     {
-        public static TripLogEntry First = new TripLogEntry("First");
-        public static TripLogEntry Second = new TripLogEntry("Second");
+        public static TripLogEntry First = new TripLogEntry() { Title = "First"};
+        public static TripLogEntry Second = new TripLogEntry() {Title = "Second"};
 
         private ExtendedRestTripLogDataService _client;
         private Uri _url;
