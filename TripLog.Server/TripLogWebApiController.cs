@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.IO;
 using System.Web.Http;
 using TripLog.Models;
 
@@ -9,10 +7,22 @@ namespace TripLog.Server
 {
     public class TripLogWebApiController : ApiController
     {
+        private readonly DbreezeTripLogPersistency _persistency;
+
+        public TripLogWebApiController()
+        {
+            _persistency = new DbreezeTripLogPersistency(new DirectoryInfo(@"C:\WebServer\Persistency"));
+            _persistency.Setup();
+        }
+
         // GET: api/TripLogApi
         public IEnumerable<TripLogEntry> Get()
         {
-            return new TripLogEntry[] { new TripLogEntry(), new TripLogEntry() };
+            var results = _persistency.GetAll();
+
+            _persistency.Dispose();
+
+            return results;
         }
 
         // GET: api/TripLogApi/5
@@ -24,6 +34,9 @@ namespace TripLog.Server
         // POST: api/TripLogApi
         public void Post([FromBody]TripLogEntry value)
         {
+            _persistency.Add(value);
+
+            _persistency.Dispose();
         }
 
         // PUT: api/TripLogApi/5
