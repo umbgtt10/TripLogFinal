@@ -1,10 +1,11 @@
-﻿using TripLog.Models;
-using TripLog.ViewModels;
-using TripLog.Views;
-using Xamarin.Forms;
-
-namespace TripLog
+﻿namespace TripLog
 {
+    using Xamarin.Forms;
+
+    using Models;
+    using ViewModels;
+    using Views;
+
     public class CombinedFactory
     {
         private readonly ViewFactory _viewFactory;

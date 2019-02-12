@@ -3,10 +3,10 @@
              x:Class="TripLog.Views.MainPage"
              Title="TripLog">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New" Clicked="New_Clicked" />
+        <ToolbarItem Text="New" Clicked="OnNewClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ListView ItemTapped="Trips_OnItemTapped" ItemsSource="{Binding LogEntries}">
+        <ListView ItemTapped="OnItemTapped" ItemsSource="{Binding LogEntries}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Title}" Detail="{Binding Notes}" />

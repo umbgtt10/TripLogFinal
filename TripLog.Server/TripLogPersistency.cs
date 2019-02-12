@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using TripLog.Models;
-
-namespace TripLog.Server
+﻿namespace TripLog.Server
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Models;
+
     public interface TripLogPersistency : IDisposable
     {
         void Setup();

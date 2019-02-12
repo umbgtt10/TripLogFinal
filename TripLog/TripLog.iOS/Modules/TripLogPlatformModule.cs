@@ -1,9 +1,10 @@
-﻿using Ninject.Modules;
-using TripLog.iOS.Services;
-using TripLog.Services;
-
-namespace TripLog.iOS.Modules
+﻿namespace TripLog.iOS.Modules
 {
+    using Ninject.Modules;
+
+    using Services;
+    using TripLog.Services;
+
     public class TripLogPlatformModule : NinjectModule
     {
         public override void Load()

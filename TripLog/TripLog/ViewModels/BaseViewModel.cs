@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using TripLog.Models;
-
-namespace TripLog.ViewModels
+﻿namespace TripLog.ViewModels
 {
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    using Models;
+
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

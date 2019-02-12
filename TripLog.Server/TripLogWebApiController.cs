@@ -1,10 +1,15 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Web.Http;
-using TripLog.Models;
-
-namespace TripLog.Server
+﻿namespace TripLog.Server
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Net;
+    using System.Net.Http;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+
+    using Models;
+
     public class TripLogWebApiController : ApiController
     {
         private readonly TripLogPersistency _persistency;
@@ -19,47 +24,83 @@ namespace TripLog.Server
         }
 
         // GET: api/TripLogApi
-        public IEnumerable<TripLogEntry> Get()
+        [ResponseType(typeof(IEnumerable<TripLogEntry>))]
+        public IHttpActionResult Get()
         {
-            var results = _persistency.GetAll();
+            try
+            {
+                var results = _persistency.GetAll();
+                _persistency.Dispose();
 
-            _persistency.Dispose();
-
-            return results;
+                return Ok(results);
+            }
+            catch (Exception e)
+            {
+                return ThrowHttpResponseException(e);
+            }
         }
 
         // GET: api/TripLogApi/5
-        public string Get(int id)
+        [ResponseType(typeof(void))]
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            throw new HttpResponseException(HttpStatusCode.NotAcceptable);
         }
 
         // POST: api/TripLogApi
-        public void Post([FromBody]TripLogEntry value)
+        [ResponseType(typeof(void))]
+        public IHttpActionResult Post([FromBody] TripLogEntry value)
         {
-            _persistency.Add(value);
+            try
+            {
+                _persistency.Add(value);
+                _persistency.Dispose();
 
-            _persistency.Dispose();
+                return CreatedAtRoute("DefaultApi", new {id = value.Id}, value);
+            }
+            catch (Exception e)
+            {
+                return ThrowHttpResponseException(e);
+            }
         }
 
         // PUT: api/TripLogApi/5
-        public void Put(int id, [FromBody]TripLogEntry value)
+        [ResponseType(typeof(void))]
+        public IHttpActionResult Put(int id, [FromBody]TripLogEntry value)
         {
+            throw new HttpResponseException(HttpStatusCode.NotAcceptable);
         }
 
         // DELETE: api/TripLogApi/5
-        public void Delete(int id)
+        [ResponseType(typeof(void))]
+        public IHttpActionResult Delete(int id)
         {
-            if (_environment == Environment.Test)
+            try
             {
-                ((ExtendedDbreezeTripLogPersistency)_persistency).RemoveAll();
+                if (_environment == Environment.Test)
+                {
+                    ((ExtendedDbreezeTripLogPersistency) _persistency).RemoveAll();
+                    _persistency.Dispose();
 
-                _persistency.Dispose();
+                    return Ok();
+                }
+
+                throw new HttpResponseException(HttpStatusCode.NotAcceptable);
             }
-            else
+            catch (Exception e)
             {
-                // Nothing or exception?
+                return ThrowHttpResponseException(e);
             }
+        }
+
+        private IHttpActionResult ThrowHttpResponseException(Exception e)
+        {
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+            {
+                ReasonPhrase = e.Message
+            };
+
+            throw new HttpResponseException(responseMessage);
         }
     }
 }

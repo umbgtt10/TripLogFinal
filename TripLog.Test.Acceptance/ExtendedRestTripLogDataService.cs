@@ -1,11 +1,12 @@
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using TripLog.Models;
-using TripLog.Services;
-
 namespace TripLog.Test.Acceptance
 {
+    using System;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+
+    using Models;
+    using Services;
+
     public class ExtendedRestTripLogDataService : RestTripLogDataService
     {
         public ExtendedRestTripLogDataService(StandardAsyncHttpClient httpClient, Uri baseUri)
@@ -14,7 +15,7 @@ namespace TripLog.Test.Acceptance
 
         public async Task RemoveAll()
         {
-            var response = await _httpClient.SendRequestAsync<TripLogEntry>(_baseUri, HttpMethod.Delete, _headers);
+            var response = await HttpClient.SendRequestAsync<TripLogEntry>(BaseUri, HttpMethod.Delete, Headers);
         }
     }
 }

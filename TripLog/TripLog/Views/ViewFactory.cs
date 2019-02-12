@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TripLog.ViewModels;
-using Xamarin.Forms;
-
-namespace TripLog.Views
+﻿namespace TripLog.Views
 {
+    using System.ComponentModel;
+
+    using Xamarin.Forms;
+
+    using ViewModels;
+
     public class ViewFactory
     {
         public ContentPage Build(ViewType modelType, BaseViewModel viewModel)
@@ -22,7 +22,7 @@ namespace TripLog.Views
                     var detailPage = new DetailPage(viewModel);
                     return detailPage;
                 default:
-                    throw new Exception($"Unknown {modelType}");
+                    throw new InvalidEnumArgumentException($"Unknown {modelType}");
             }
         }
     }

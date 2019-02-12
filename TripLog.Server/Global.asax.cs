@@ -1,8 +1,8 @@
-﻿using System.Web;
-using System.Web.Http;
-
-namespace TripLog.Server
+﻿namespace TripLog.Server
 {
+    using System.Web;
+    using System.Web.Http;
+
     public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()

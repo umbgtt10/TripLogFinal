@@ -1,11 +1,13 @@
-﻿using System.Threading.Tasks;
-using CoreLocation;
-using TripLog.Models;
-using TripLog.Services;
-using UIKit;
-
-namespace TripLog.iOS.Services
+﻿namespace TripLog.iOS.Services
 {
+    using System.Threading.Tasks;
+
+    using CoreLocation;
+    using UIKit;
+
+    using Models;
+    using TripLog.Services;
+
     public class IosLocationService : GeoLocationService
     {
         private TaskCompletionSource<CLLocation> _locationTaskCompletion;

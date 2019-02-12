@@ -1,12 +1,12 @@
-﻿using TripLog.Models;
-using TripLog.ViewModels;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps;
-using Xamarin.Forms.Xaml;
-
-namespace TripLog.Views
+﻿namespace TripLog.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    using Xamarin.Forms;
+    using Xamarin.Forms.Maps;
+    using Xamarin.Forms.Xaml;
+
+    using ViewModels;
+
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DetailPage : ContentPage
 	{
         private DetailViewModel _vm { get { return BindingContext as DetailViewModel; } }

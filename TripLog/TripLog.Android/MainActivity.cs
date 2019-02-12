@@ -1,14 +1,14 @@
-﻿using Android;
-using Android.App;
-using Android.Content.PM;
-
-using Android.OS;
-using Android.Support.V4.App;
-using Android.Support.V4.Content;
-using TripLog.Droid.Modules;
-
-namespace TripLog.Droid
+﻿namespace TripLog.Droid
 {
+    using Android;
+    using Android.App;
+    using Android.Content.PM;
+    using Android.OS;
+    using Android.Support.V4.App;
+    using Android.Support.V4.Content;
+
+    using Modules;
+
     [Activity(Label = "TripLog", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -29,7 +29,14 @@ namespace TripLog.Droid
 
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) != Permission.Granted)
             {
-                ActivityCompat.RequestPermissions(this, new[] { Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation }, 0);
+                ActivityCompat.RequestPermissions(
+                    this, 
+                    new[]
+                    {
+                        Manifest.Permission.AccessCoarseLocation,
+                        Manifest.Permission.AccessFineLocation
+                    }, 
+                    0);
             }
             else
             {

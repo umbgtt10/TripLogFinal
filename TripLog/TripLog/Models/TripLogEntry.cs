@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TripLog.Models
+﻿namespace TripLog.Models
 {
+    using System;
+    using System.Collections.Generic;
+
     public class TripLogEntry
     {
         public string Id { get; set; }

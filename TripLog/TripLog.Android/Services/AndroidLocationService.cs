@@ -1,17 +1,17 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Android.App;
-using Android.Content;
-using Android.Locations;
-using Android.OS;
-using Android.Runtime;
-
-using TripLog.Models;
-using TripLog.Services;
-
-namespace TripLog.Droid.Services
+﻿namespace TripLog.Droid.Services
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using Android.App;
+    using Android.Content;
+    using Android.Locations;
+    using Android.OS;
+    using Android.Runtime;
+
+    using Models;
+    using TripLog.Services;
+
     public class AndroidLocationService : Java.Lang.Object, GeoLocationService, ILocationListener
     {
         private TaskCompletionSource<Location> _tcs;

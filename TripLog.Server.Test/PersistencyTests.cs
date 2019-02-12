@@ -1,10 +1,12 @@
-﻿using System.IO;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TripLog.Models;
-
-namespace TripLog.Server.Test
+﻿namespace TripLog.Server.Test
 {
+    using System.IO;
+    using System.Linq;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Models;
+
     [TestClass]
     public class PersistencyTests
     {
@@ -40,7 +42,7 @@ namespace TripLog.Server.Test
             _db.Add(new TripLogEntry {Title = title1});
             _db.Add(new TripLogEntry { Title = title2 });
 
-            var allEntries = _db.GetAll();
+            var allEntries = _db.GetAll().ToList();
 
             Assert.AreEqual(2, allEntries.Count());
             Assert.AreEqual(1, allEntries.Count(elem => elem.Title.Equals(title1)));
@@ -56,7 +58,7 @@ namespace TripLog.Server.Test
             _db.Add(entry);
             _db.Add(entry);
 
-            var allEntries = _db.GetAll();
+            var allEntries = _db.GetAll().ToList();
 
             Assert.AreEqual(1, allEntries.Count());
             Assert.AreEqual(1, allEntries.Count(elem => elem.Title.Equals(title1)));
@@ -65,6 +67,16 @@ namespace TripLog.Server.Test
         [TestMethod]
         public void GetAllElementsFromPersistencyTest()
         {
+            var allEntries = _db.GetAll();
+
+            Assert.AreEqual(0, allEntries.Count());
+        }
+
+        [TestMethod]
+        public void RemoveAllFromPersistencyTest()
+        {
+            _db.RemoveAll();
+
             var allEntries = _db.GetAll();
 
             Assert.AreEqual(0, allEntries.Count());

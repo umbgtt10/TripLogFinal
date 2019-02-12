@@ -1,8 +1,9 @@
-﻿using System;
-using TripLog.Models;
-
-namespace TripLog.ViewModels
+﻿namespace TripLog.ViewModels
 {
+    using System;
+
+    using Models;
+
     public class DetailViewModel : BaseViewModel
     {
         #region Observables
@@ -15,10 +16,6 @@ namespace TripLog.ViewModels
         }
 
         #endregion
-
-        public DetailViewModel()
-        {
-        }
 
         public override void Init()
         {

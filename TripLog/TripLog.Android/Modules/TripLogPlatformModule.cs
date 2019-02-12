@@ -1,9 +1,10 @@
-﻿using Ninject.Modules;
-using TripLog.Droid.Services;
-using TripLog.Services;
-
-namespace TripLog.Droid.Modules
+﻿namespace TripLog.Droid.Modules
 {
+    using Ninject.Modules;
+
+    using Services;
+    using TripLog.Services;
+
     public class TripLogPlatformModule : NinjectModule
     {
         public override void Load()

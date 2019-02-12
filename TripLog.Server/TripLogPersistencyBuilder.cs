@@ -1,8 +1,8 @@
-﻿using System;
-using System.IO;
-
-namespace TripLog.Server
+﻿namespace TripLog.Server
 {
+    using System.ComponentModel;
+    using System.IO;
+
     public class TripLogPersistencyBuilder
     {
         private DirectoryInfo _directory;
@@ -23,7 +23,7 @@ namespace TripLog.Server
                     return new DbreezeTripLogPersistency(new DirectoryInfo(@"C:\WebServer\Persistency"));
 
                 default:
-                    throw new Exception();
+                    throw new InvalidEnumArgumentException($"Unknown: {env}");
             }
         }
     }

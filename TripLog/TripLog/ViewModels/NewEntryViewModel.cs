@@ -1,10 +1,12 @@
-﻿using System;
-using TripLog.Models;
-using TripLog.Services;
-using Xamarin.Forms;
-
-namespace TripLog.ViewModels
+﻿namespace TripLog.ViewModels
 {
+    using System;
+
+    using Xamarin.Forms;
+
+    using Models;
+    using Services;
+    
     public class NewEntryViewModel : BaseViewModel
     {
         #region Observables
@@ -85,9 +87,6 @@ namespace TripLog.ViewModels
             GeoLocationService locationService,
             TripLogDataService dataService)
         {
-            Date = DateTime.Now;
-            Rating = 1;
-
             _locationService = locationService;
             _dataService = dataService;
         }
@@ -120,8 +119,9 @@ namespace TripLog.ViewModels
                 Rating = Rating
             };
 
-            // Persist the newly created entry here!
             _dataService.AddEntryAsync(newEntry);
+
+            // TODO: We should go back to the main screen...
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using System.IO;
-
-namespace TripLog.Server
+﻿namespace TripLog.Server
 {
+    using System.IO;
+
     public class ExtendedDbreezeTripLogPersistency : DbreezeTripLogPersistency
     {
         public ExtendedDbreezeTripLogPersistency(DirectoryInfo directory) : base(directory)

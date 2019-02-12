@@ -1,11 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using Windows.Devices.Geolocation;
-using TripLog.Models;
-using TripLog.Services;
-
-namespace TripLog.UWP.Services
+﻿namespace TripLog.UWP.Services
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using Windows.Devices.Geolocation;
+
+    using Models;
+    using TripLog.Services;
+
     public class UwpLocationService : GeoLocationService
     {
         public async Task<GeoCoords> PullCoordinatesAsync()

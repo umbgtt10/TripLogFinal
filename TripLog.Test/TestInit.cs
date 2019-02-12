@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using Moq;
-using TripLog.Models;
-using TripLog.Services;
-using TripLog.ViewModels;
-
-namespace TripLog.Test
+﻿namespace TripLog.Test
 {
+    using System.Collections.Generic;
+
+    using Moq;
+
+    using Models;
+    using Services;
+    using ViewModels;
+
     public class TestInit
     {
         public static Mock<GeoLocationService> MockedGeoLocationService = new Mock<GeoLocationService>();

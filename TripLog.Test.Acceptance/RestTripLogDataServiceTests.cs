@@ -1,12 +1,14 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TripLog.Models;
-using TripLog.Services;
-
 namespace TripLog.Test.Acceptance
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using TripLog.Models;
+    using TripLog.Services;
+
     [TestClass]
     public class RestTripLogDataServiceTests
     {

@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Foundation;
-using TripLog.iOS.Modules;
-using UIKit;
-
-namespace TripLog.iOS
+﻿namespace TripLog.iOS
 {
+    using Foundation;
+    using UIKit;
+
+    using Modules;
+
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-namespace TripLog.Services
+﻿namespace TripLog.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
     public class StandardAsyncHttpClient
     {
         public async Task<T> SendRequestAsync<T>(

@@ -1,7 +1,7 @@
-﻿using TripLog.UWP.Modules;
-
-namespace TripLog.UWP
+﻿namespace TripLog.UWP
 {
+    using Modules;
+
     public sealed partial class MainPage
     {
         public MainPage()

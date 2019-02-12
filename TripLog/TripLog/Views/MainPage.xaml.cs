@@ -1,11 +1,12 @@
-﻿using System;
-
-using TripLog.Models;
-using TripLog.ViewModels;
-using Xamarin.Forms;
-
-namespace TripLog.Views
+﻿namespace TripLog.Views
 {
+    using System;
+
+    using Xamarin.Forms;
+
+    using Models;
+    using ViewModels;
+
     public partial class MainPage : ContentPage
     {
         private CombinedFactory _combinedFactory;
@@ -22,14 +23,14 @@ namespace TripLog.Views
             _combinedFactory = combinedFactory;
         }
 
-        private void New_Clicked(object sender, EventArgs args)
+        private void OnNewClicked(object sender, EventArgs args)
         {
             var newEntryPage = _combinedFactory.Build(ViewType.New);
 
             Navigation.PushAsync(newEntryPage);
         }
 
-        private void Trips_OnItemTapped(object sender, ItemTappedEventArgs e)
+        private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             var entry = (TripLogEntry)e.Item;
 
