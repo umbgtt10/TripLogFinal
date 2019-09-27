@@ -10,7 +10,7 @@
 	{
 		public NewEntryPage (BaseViewModel viewModel)
 		{
-			InitializeComponent ();
+			InitializeComponent();
 
             BindingContext = viewModel;
         }

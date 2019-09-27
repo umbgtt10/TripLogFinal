@@ -82,6 +82,6 @@
             };
 
             return new List<TripLogEntry>(data).Union(hardCodedData).ToList();
-        }
+        }        
     }
 }

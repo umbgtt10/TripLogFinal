@@ -10,17 +10,19 @@
     public partial class MainPage : ContentPage
     {
         private CombinedFactory _combinedFactory;
+        private readonly BaseViewModel _vm;
 
         public MainPage(BaseViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = viewModel;
+            _vm = viewModel;
         }
 
         public void Init(CombinedFactory combinedFactory)
         {
-            _combinedFactory = combinedFactory;
+            _combinedFactory = combinedFactory; 
         }
 
         private void OnNewClicked(object sender, EventArgs args)
@@ -37,6 +39,13 @@
             var detailView = _combinedFactory.Build(ViewType.Detail, entry);
 
             Navigation.PushAsync(detailView);
+
+            trips.SelectedItem = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            _vm.Init();
         }
     }
 }
