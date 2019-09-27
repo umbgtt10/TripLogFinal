@@ -6,7 +6,7 @@
         <ToolbarItem Text="New" Clicked="OnNewClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ListView ItemTapped="OnItemTapped" ItemsSource="{Binding LogEntries}">
+        <ListView ItemTapped="OnItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Title}" Detail="{Binding Notes}" />
