@@ -11,8 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="Portable.Ninject" Version="3.3.1" />
-    <PackageReference Include="Xamarin.Forms" Version="3.5.0.129452" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="3.5.0.129452" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.815419" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.2.0.815419" />
   </ItemGroup>
 
   <ItemGroup>
