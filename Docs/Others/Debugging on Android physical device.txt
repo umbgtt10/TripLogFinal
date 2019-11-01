@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/25192573/how-do-i-debug-on-a-real-android-device-using-xamarin-for-visual-studio

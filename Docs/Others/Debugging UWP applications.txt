@@ -1,0 +1,2 @@
+- https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/deploying-and-debugging-uwp-apps
+- https://stackoverflow.com/questions/53684301/how-to-add-windows-phone-emulator-to-the-uwp-project ==> https://developer.microsoft.com/en-us/windows/downloads/sdk-archive
