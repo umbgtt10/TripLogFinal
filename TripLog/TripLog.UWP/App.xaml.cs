@@ -41,8 +41,8 @@
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Xamarin.FormsMaps.Init("Token to be added later!");
                 Xamarin.Forms.Forms.Init(e);
+                Xamarin.FormsMaps.Init("Token to be added later!");
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
