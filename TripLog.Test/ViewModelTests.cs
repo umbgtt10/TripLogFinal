@@ -1,7 +1,7 @@
 ﻿namespace TripLog.Test
 {
     using System;
-
+    using System.Threading.Tasks;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Models;
@@ -12,63 +12,63 @@
     {
         [TestMethod]
         [ExpectedException(typeof(NotImplementedException))]
-        public void MainViewModelInitializationThrowsTest()
+        public async Task MainViewModelInitializationThrowsTest()
         {
             var viewModel = new MainViewModel(TestInit.MockedTripLogDataService.Object);
 
             var entry = new TripLogEntry();
 
-            viewModel.Init(entry);
+            await viewModel.Init(entry);
         }
 
         [TestMethod]
-        public void MainViewModelInitializationOkTest()
+        public async Task MainViewModelInitializationOkTest()
         {
             var viewModel = new MainViewModel(TestInit.MockedTripLogDataService.Object);
 
-            viewModel.Init();
+            await viewModel.Init();
 
             Assert.AreEqual(4, viewModel.LogEntries.Count);
         }
 
         [TestMethod]
-        public void DetailViewModelInitializationThrowsTest()
+        public async Task DetailViewModelInitializationThrowsTest()
         {
             var viewModel = new DetailViewModel();
 
             var entry = new TripLogEntry();
 
-            viewModel.Init(entry);
+            await viewModel.Init(entry);
 
             Assert.AreEqual(entry, viewModel.Entry);
         }
 
         [TestMethod]
         [ExpectedException(typeof(NotImplementedException))]
-        public void DetailViewModelInitializationOkTest()
+        public async Task DetailViewModelInitializationOkTest()
         {
             var viewModel = new DetailViewModel();
 
-            viewModel.Init();
+            await viewModel.Init();
         }
 
         [TestMethod]
         [ExpectedException(typeof(NotImplementedException))]
-        public void NewEntryViewModelInitializationThrowsTest()
+        public async Task NewEntryViewModelInitializationThrowsTest()
         {
             var viewModel = new NewEntryViewModel(TestInit.MockedGeoLocationService.Object, TestInit.MockedTripLogDataService.Object);
 
             var entry = new TripLogEntry();
 
-            viewModel.Init(entry);
+            await viewModel.Init(entry);
         }
 
         [TestMethod]
-        public void NewEntryViewModelInitializationOkTest()
+        public async Task NewEntryViewModelInitializationOkTest()
         {
             var viewModel = new NewEntryViewModel(TestInit.MockedGeoLocationService.Object, TestInit.MockedTripLogDataService.Object);
 
-            viewModel.Init();
+            await viewModel.Init();
 
             Assert.AreEqual(1, viewModel.Rating);
         }

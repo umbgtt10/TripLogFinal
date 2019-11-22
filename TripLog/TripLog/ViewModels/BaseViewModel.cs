@@ -2,7 +2,7 @@
 {
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
-
+    using System.Threading.Tasks;
     using Models;
 
     public abstract class BaseViewModel : INotifyPropertyChanged
@@ -15,7 +15,7 @@
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public abstract void Init();
-        public abstract void Init(TripLogEntry entry);
+        public abstract Task Init();
+        public abstract Task Init(TripLogEntry entry);
     }
 }

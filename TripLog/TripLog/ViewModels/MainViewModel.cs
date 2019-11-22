@@ -37,12 +37,12 @@
             _dataService = dataService;
         }
 
-        public override async void Init()
+        public override async Task Init()
         {
             LogEntries = new ObservableCollection<TripLogEntry>(await RetrieveEntries());
         }
 
-        public override void Init(TripLogEntry entry)
+        public override Task Init(TripLogEntry entry)
         {
             throw new NotImplementedException();
         }

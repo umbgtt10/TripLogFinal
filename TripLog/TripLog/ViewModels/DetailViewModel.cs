@@ -1,7 +1,7 @@
 ﻿namespace TripLog.ViewModels
 {
     using System;
-
+    using System.Threading.Tasks;
     using Models;
 
     public class DetailViewModel : BaseViewModel
@@ -17,14 +17,16 @@
 
         #endregion
 
-        public override void Init()
+        public override Task Init()
         {
             throw new NotImplementedException();
         }
 
-        public override void Init(TripLogEntry entry)
+        public override Task Init(TripLogEntry entry)
         {
             Entry = entry;
+
+            return Task.CompletedTask;
         }
     }
 }

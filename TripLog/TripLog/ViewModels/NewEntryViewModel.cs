@@ -6,7 +6,8 @@
 
     using Models;
     using Services;
-    
+    using System.Threading.Tasks;
+
     public class NewEntryViewModel : BaseViewModel
     {
         #region Observables
@@ -91,7 +92,7 @@
             _dataService = dataService;
         }
 
-        public override async void Init()
+        public override async Task Init()
         {
             Date = DateTime.Now;
             Rating = 1;
@@ -102,7 +103,7 @@
             Latitude = coordinates.Latitude;
         }
 
-        public override void Init(TripLogEntry entry)
+        public override Task Init(TripLogEntry entry)
         {
             throw new NotImplementedException();
         }
