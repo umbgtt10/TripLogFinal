@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Mvvm.MainPage">
+
+    <StackLayout>
+        <Label Text="{Binding Result}" 
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+           FontSize="50"/>
+        <Button Text="This is an incrementing button"
+                Command="{Binding OnButtonIncrementClickedCommand}">
+        </Button>
+        <Button Text="This is a custom incrementing button"
+                Command="{Binding OnButtonCustomIncrementClickedCommand}"
+                CommandParameter="2">
+        </Button>        
+        <Button Text="This is a reset button"
+                Command="{Binding OnButtonResetClickedCommand}">
+        </Button>
+
+        <ListView x:Name="SimpleList" ItemsSource="{Binding Entries}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell 
+                        Text="{Binding Value1}" 
+                        Detail="{Binding Value2}">
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="This is an entry adding button"
+                Command="{Binding OnButtonAddClickedCommand}">
+        </Button>
+        <Button Text="This is a flushing button"
+                Command="{Binding OnButtonClearClickedCommand}">
+        </Button>        
+    </StackLayout>
+
+</ContentPage>
