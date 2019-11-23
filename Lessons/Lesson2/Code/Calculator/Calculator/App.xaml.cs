@@ -10,7 +10,7 @@ namespace Calculator
         {
             InitializeComponent();
 
-            MainPage = new MainPage(new Calculator());
+            MainPage = new MainPage(new Calc());
         }
 
         protected override void OnStart()

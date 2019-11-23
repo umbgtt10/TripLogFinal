@@ -21,7 +21,7 @@ namespace Calculator.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new App());
+            LoadApplication(new Calculator.App());
         }
     }
 }
