@@ -1,3 +1,0 @@
-var generator = new Generator();
-var engine = new Engine(generator);
-var car = new Car(engine);
