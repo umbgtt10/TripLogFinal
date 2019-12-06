@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace TripLog
+namespace Calculator
 {
     public partial class App : Application
     {
@@ -10,9 +10,7 @@ namespace TripLog
         {
             InitializeComponent();
 
-            var mainPage = new MainPage();
-
-            MainPage = new NavigationPage(mainPage);
+            MainPage = new MainPage(new MainPageViewModel(new Calc()));
         }
 
         protected override void OnStart()
