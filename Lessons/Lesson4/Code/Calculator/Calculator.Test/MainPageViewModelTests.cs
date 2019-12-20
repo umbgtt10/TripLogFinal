@@ -39,7 +39,7 @@ namespace Calculator
         [DataTestMethod]
         [DataRow("+", Operator.Plus)]
         [DataRow("-", Operator.Minus)]
-        [DataRow("*", Operator.Multi)]
+        [DataRow("X", Operator.Multi)]
         [DataRow("/", Operator.Div)]
         public void AddElementCommand_AddOperator_CallsCorrespondingMethod(string @operator, Operator argumentOperator)
         {

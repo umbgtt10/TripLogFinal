@@ -22,7 +22,7 @@
                 Command="{Binding OnButtonResetClickedCommand}">
         </Button>
 
-        <ListView x:Name="SimpleList" ItemsSource="{Binding Entries}">
+        <ListView ItemsSource="{Binding Entries}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell 

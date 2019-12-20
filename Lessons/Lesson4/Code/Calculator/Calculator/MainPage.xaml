@@ -4,209 +4,176 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Calculator.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseButton" TargetType="Button">
+                <Setter Property="Text" Value="Empty"/>
+                <Setter Property="BackgroundColor" Value="Gray"/>
+                <Setter Property="FontSize" Value="35"/>
+                <Setter Property="BorderColor" Value="Black"/>
+            </Style>
 
-        <Grid Margin="5,5,5,5" ColumnSpacing="3" RowSpacing="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
+            <Style x:Key="GreyOperatorButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Gray"/>
+            </Style>
 
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
-                   BackgroundColor="DarkGray"
-                   TextColor="Black"
-                   HorizontalTextAlignment="End"
-                   VerticalTextAlignment="Center"
-                   FontSize="65"
-                   Text="{Binding Result}">
-            </Label>
+            <Style x:Key="YellowOperatorButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Orange"/>
+            </Style>
 
-            <Button Grid.Row="1" Grid.Column="0"
-                    BackgroundColor="Gray"
-                    TextColor="White"
-                    BorderColor="Black"
-                    FontSize="35"
-                    Text="C"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="C">
-            </Button>
+            <Style x:Key="WhiteNumericButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid Margin="5,5,5,5" ColumnSpacing="3" RowSpacing="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
 
-            <Button Grid.Row="1" Grid.Column="1"
-                    BackgroundColor="Gray"
-                    TextColor="White"
-                    BorderColor="Black"
-                    FontSize="35"                    
-                    Text="+/-"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="+-">
-            </Button>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
+               BackgroundColor="DarkGray"
+               TextColor="Black"
+               HorizontalTextAlignment="End"
+               VerticalTextAlignment="Center"
+               FontSize="65"
+               Text="{Binding Result}">
+        </Label>
 
-            <Button Grid.Row="1" Grid.Column="2"
-                    BackgroundColor="Gray"
-                    TextColor="White"
-                    BorderColor="Black"
-                    FontSize="35"                    
-                    Text="%" 
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="%">
-            </Button>
+        <Button Grid.Row="1" Grid.Column="0"
+                Style="{StaticResource GreyOperatorButton}"
+                Text="C"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="C">
+        </Button>
 
-           <Button Grid.Row="1" Grid.Column="3"
-                   BackgroundColor="Orange"
-                   TextColor="White"
-                   BorderColor="Black"
-                   FontSize="35"                    
-                   Text="DIV"
-                   Command="{Binding AddElementCommand}"
-                   CommandParameter="/">
-            </Button>
+        <Button Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource GreyOperatorButton}"                   
+                Text="+/-"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="+-">
+        </Button>
 
-            <Button Grid.Row="2" Grid.Column="0"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"   
-                    FontSize="35"                    
-                    Text="1"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="1">
-            </Button>
-            <Button Grid.Row="2" Grid.Column="1"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"    
-                    FontSize="35"                    
-                    Text="2"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="2">
-            </Button>
-            <Button Grid.Row="2" Grid.Column="2"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"     
-                    FontSize="35"                    
-                    Text="3"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="3">
-            </Button>
-            <Button Grid.Row="2" Grid.Column="3"
-                    BackgroundColor="Orange"
-                    TextColor="White"
-                    BorderColor="Black"
-                    FontSize="35"                    
-                    Text="X"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="X">
-            </Button>
+        <Button Grid.Row="1" Grid.Column="2"
+                Style="{StaticResource GreyOperatorButton}"                
+                Text="%" 
+                Command="{Binding AddElementCommand}"
+                CommandParameter="%">
+        </Button>
 
-            <Button Grid.Row="3" Grid.Column="0"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"    
-                    FontSize="35"                    
-                    Text="4"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="4">
-            </Button>
-            <Button Grid.Row="3" Grid.Column="1"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"      
-                    FontSize="35"                    
-                    Text="5"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="5">
-            </Button>
-            <Button Grid.Row="3" Grid.Column="2"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"   
-                    FontSize="35"                    
-                    Text="6"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="6">
-            </Button>
-            <Button Grid.Row="3" Grid.Column="3"
-                    BackgroundColor="Orange"
-                    TextColor="White"
-                    BorderColor="Black"
-                    FontSize="35"                    
-                    Text="-"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="-">
-            </Button>
+        <Button Grid.Row="1" Grid.Column="3"
+                Style="{StaticResource YellowOperatorButton}"                   
+                Text="/"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="/">
+        </Button>
 
-            <Button Grid.Row="4" Grid.Column="0"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"   
-                    FontSize="35"                    
-                    Text="7"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="7">
-            </Button>
-            <Button Grid.Row="4" Grid.Column="1"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"  
-                    FontSize="35"                    
-                    Text="8"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="8">
-            </Button>
-            <Button Grid.Row="4" Grid.Column="2"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"     
-                    FontSize="35"                    
-                    Text="9"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="9">
-            </Button>
-            <Button Grid.Row="4" Grid.Column="3"
-                    BackgroundColor="Orange"
-                    TextColor="White"
-                    BorderColor="Black"
-                    FontSize="35"                    
-                    Text="+"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="+">
-            </Button>
+        <Button Grid.Row="2" Grid.Column="0"
+                Style="{StaticResource WhiteNumericButton}"                  
+                Text="1"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="1">
+        </Button>
+        <Button Grid.Row="2" Grid.Column="1"
+                Style="{StaticResource WhiteNumericButton}"                  
+                Text="2"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="2">
+        </Button>
+        <Button Grid.Row="2" Grid.Column="2"
+                Style="{StaticResource WhiteNumericButton}"                     
+                Text="3"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="3">
+        </Button>
+        <Button Grid.Row="2" Grid.Column="3"
+                Style="{StaticResource YellowOperatorButton}"               
+                Text="X"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="X">
+        </Button>
 
-            <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"    
-                    FontSize="35"                    
-                    Text="0"
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="0">
-            </Button>
-            <Button Grid.Row="5" Grid.Column="2" 
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"        
-                    FontSize="35"                    
-                    Text="."
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter=".">
-            </Button>
-            <Button Grid.Row="5" Grid.Column="3"
-                    BackgroundColor="Orange"
-                    TextColor="White"
-                    BorderColor="Black"
-                    FontSize="35"                    
-                    Text="="
-                    Command="{Binding AddElementCommand}"
-                    CommandParameter="=">
-            </Button>
-        </Grid>
+        <Button Grid.Row="3" Grid.Column="0"
+                Style="{StaticResource WhiteNumericButton}"                   
+                Text="4"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="4">
+        </Button>
+        <Button Grid.Row="3" Grid.Column="1"
+                Style="{StaticResource WhiteNumericButton}"                    
+                Text="5"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="5">
+        </Button>
+        <Button Grid.Row="3" Grid.Column="2"
+                Style="{StaticResource WhiteNumericButton}"                   
+                Text="6"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="6">
+        </Button>
+        <Button Grid.Row="3" Grid.Column="3"
+                Style="{StaticResource YellowOperatorButton}"                 
+                Text="-"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="-">
+        </Button>
+
+        <Button Grid.Row="4" Grid.Column="0"
+                Style="{StaticResource WhiteNumericButton}"                     
+                Text="7"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="7">
+        </Button>
+        <Button Grid.Row="4" Grid.Column="1"
+                Style="{StaticResource WhiteNumericButton}"                    
+                Text="8"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="8">
+        </Button>
+        <Button Grid.Row="4" Grid.Column="2"
+                Style="{StaticResource WhiteNumericButton}"                    
+                Text="9"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="9">
+        </Button>
+        <Button Grid.Row="4" Grid.Column="3"
+                Style="{StaticResource YellowOperatorButton}"                  
+                Text="+"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="+">
+        </Button>
+
+        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                Style="{StaticResource WhiteNumericButton}"                   
+                Text="0"
+                Command="{Binding AddElementCommand}"
+                CommandParameter="0">
+        </Button>
+        <Button Grid.Row="5" Grid.Column="2" 
+                Style="{StaticResource WhiteNumericButton}"                   
+                Text="."
+                Command="{Binding AddElementCommand}"
+                CommandParameter=".">
+        </Button>
+        <Button Grid.Row="5" Grid.Column="3"
+                Style="{StaticResource YellowOperatorButton}"                  
+                Text="="
+                Command="{Binding AddElementCommand}"
+                CommandParameter="=">
+        </Button>
+    </Grid>
 </ContentPage>

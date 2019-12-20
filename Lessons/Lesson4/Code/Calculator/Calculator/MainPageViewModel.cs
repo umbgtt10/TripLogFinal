@@ -130,7 +130,7 @@ namespace Calculator
                     result = true;
                     break;
 
-                case "*":
+                case "X":
                     @operator = Operator.Multi;
                     result = true;
                     break;
