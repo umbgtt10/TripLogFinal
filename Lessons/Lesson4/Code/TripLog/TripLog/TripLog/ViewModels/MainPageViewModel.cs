@@ -62,9 +62,9 @@ namespace TripLog.ViewModels
             }
         }
 
-        private readonly TripLogFactory factory;
+        private readonly ITripLogFactory factory;
 
-        public MainPageViewModel(TripLogFactory factory)
+        public MainPageViewModel(ITripLogFactory factory)
         {
             this.factory = factory;
         }

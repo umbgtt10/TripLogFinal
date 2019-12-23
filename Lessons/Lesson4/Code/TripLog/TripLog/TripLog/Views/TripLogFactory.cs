@@ -5,7 +5,7 @@ using TripLog.ViewModels;
 
 namespace TripLog.Views
 {
-    public class TripLogFactory
+    public class TripLogFactory : ITripLogFactory
     {
         private readonly ViewModelFactory viewModelFactory;
         private readonly ViewFactory viewFactory;
