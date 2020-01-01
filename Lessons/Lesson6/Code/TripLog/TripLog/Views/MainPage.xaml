@@ -1,0 +1,25 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TripLog.Views.MainPage"
+             Title="TripLog">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" Command="{Binding NewCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ListView x:Name="list" ItemsSource="{Binding Entries}" 
+                  SelectedItem="{Binding DetailSelectedItem, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Title}" Detail="{Binding Notes}">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                      Command="{Binding BindingContext.DeleteCommand,
+                                                        Source={x:Reference list}}"
+                                      CommandParameter="{Binding .}"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
