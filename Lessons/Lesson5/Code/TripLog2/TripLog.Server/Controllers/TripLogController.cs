@@ -30,9 +30,7 @@ namespace TripLog.Server.Controllers
             }
             catch (Exception e)
             {
-                return Problem(
-                    detail: e.StackTrace,
-                    title: e.Message);
+                return StatusCode(500, e?.Message);
             }
         }
 
@@ -47,9 +45,7 @@ namespace TripLog.Server.Controllers
             }
             catch (Exception e)
             {
-                return Problem(
-                    detail: e.StackTrace,
-                    title: e.Message);
+                return StatusCode(500, e?.Message);
             }
         }
     }

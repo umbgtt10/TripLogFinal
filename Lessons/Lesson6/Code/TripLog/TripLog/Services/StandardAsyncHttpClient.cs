@@ -80,8 +80,6 @@
 
         private static async Task<HttpResponseMessage> ExtractResponse<T>(HttpRequestMessage requestMessage, HttpClient client)
         {
-            //client.Timeout = TimeSpan.FromMinutes(2);
-
             var response =  await client.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead);
 
             return response;

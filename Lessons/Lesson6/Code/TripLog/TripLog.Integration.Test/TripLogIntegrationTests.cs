@@ -46,17 +46,17 @@ namespace TripLog.Integration.Test
             await Reset();
             newEntryPageViewModel.Title = "Title1";
             newEntryPageViewModel.SaveCommand.Execute(null);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             newEntryPageViewModel.Title = "Title2";
             newEntryPageViewModel.SaveCommand.Execute(null);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             newEntryPageViewModel.Title = "Title3";
             newEntryPageViewModel.SaveCommand.Execute(null);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
 
             // Act
             await mainPageViewModel.Init();
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
 
             // Assert
             var entries = mainPageViewModel.Entries;
@@ -74,23 +74,23 @@ namespace TripLog.Integration.Test
             await Reset();
             newEntryPageViewModel.Title = entry1.Title;
             newEntryPageViewModel.SaveCommand.Execute(null);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             newEntryPageViewModel.Title = entry2.Title;
             newEntryPageViewModel.SaveCommand.Execute(null);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             newEntryPageViewModel.Title = entry3.Title;
             newEntryPageViewModel.SaveCommand.Execute(null);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             mainPageViewModel.DeleteCommand.Execute(entry1);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             mainPageViewModel.DeleteCommand.Execute(entry2);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             mainPageViewModel.DeleteCommand.Execute(entry3);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
 
             // Act
             await mainPageViewModel.Init();
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
 
             // Assert
             var entries = mainPageViewModel.Entries;
