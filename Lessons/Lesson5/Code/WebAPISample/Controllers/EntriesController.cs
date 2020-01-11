@@ -17,6 +17,7 @@ namespace WebAPISample.Controllers
         {
             _logger = logger;
             this.entries.Add(new Entry() { Id = 5, Message = "First" });
+            this.entries.Add(new Entry() { Id = 10, Message = "Second" });
         }
 
         [HttpGet]

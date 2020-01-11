@@ -25,7 +25,7 @@ namespace TripLog.Integration.Test
         {
             tripLogFactoryMock = new Mock<ITripLogFactory>();
             var httpClient = new StandardAsyncHttpClient();
-            tripLogDataService = new RestTripLogDataService(httpClient, new Uri("http://192.168.1.21:10080/Api/TripLog"));
+            tripLogDataService = new RestTripLogDataService(httpClient, new Uri("http://localhost:10080/Api/TripLog"));
             mainPageViewModel = new MainPageViewModel(tripLogFactoryMock.Object, tripLogDataService);
 
             tripLogNavigationMock = new Mock<ITripLogNavigation>();
